@@ -1,0 +1,4 @@
+streamlit
+pandas
+llama-index==0.10.29
+openai
