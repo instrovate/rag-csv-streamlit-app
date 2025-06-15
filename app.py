@@ -4,6 +4,7 @@ from llama_index.core import VectorStoreIndex
 from llama_index.core.schema import Document
 from llama_index.llms.openai import OpenAI
 from llama_index.core.base.llms.base import BaseLLM
+import os
 
 # --- Page Config ---
 st.set_page_config(page_title="Ask Your CSV 📊", layout="wide")
@@ -17,6 +18,9 @@ This app uses your uploaded data to generate context-specific responses. Powered
 
 # --- Load OpenAI API Key securely ---
 openai_api_key = st.secrets["openai_api_key"]  # Set this in Streamlit Cloud
+
+os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
+
 
 # --- Upload CSV ---
 uploaded_file = st.file_uploader("📁 Upload your CSV file", type=["csv"])
